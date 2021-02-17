@@ -1,7 +1,5 @@
 ﻿namespace ECS.Legacy
 {  
-   
-{
 
     public class ECS
     {
