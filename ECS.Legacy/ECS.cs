@@ -1,5 +1,7 @@
 ﻿namespace ECS.Legacy
-{
+{  
+    // test at klon virker
+
     public class ECS
     {
         private int _threshold;
