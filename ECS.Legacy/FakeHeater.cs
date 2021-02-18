@@ -1,6 +1,6 @@
 ﻿namespace ECS.Legacy
 {
-    public class FakeHeater : IHeater
+    public class FakeHeater
     {
         public void TurnOn()
         {
