@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS.Legacy", "ECS.Legacy\ECS.Legacy.csproj", "{7BBA6D8F-4649-4ADB-B90E-94F0FB6554AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5CABD59-540F-4FA8-B8A3-17B419172AE8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECS.Legacy.Test.Unit", "ECS.Test.Unit\ECS.Legacy.Test.Unit.csproj", "{70F3E3D2-9F3E-46E3-BDCE-67E731964638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +19,15 @@ Global
 		{7BBA6D8F-4649-4ADB-B90E-94F0FB6554AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BBA6D8F-4649-4ADB-B90E-94F0FB6554AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BBA6D8F-4649-4ADB-B90E-94F0FB6554AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F3E3D2-9F3E-46E3-BDCE-67E731964638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F3E3D2-9F3E-46E3-BDCE-67E731964638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F3E3D2-9F3E-46E3-BDCE-67E731964638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F3E3D2-9F3E-46E3-BDCE-67E731964638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFE3E770-CB6B-42E5-9208-0E608071E293}
 	EndGlobalSection
 EndGlobal

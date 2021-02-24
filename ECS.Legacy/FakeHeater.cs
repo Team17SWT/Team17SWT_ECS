@@ -1,15 +1,48 @@
 ﻿namespace ECS.Legacy
 {
-    public class FakeHeater
+    public class FakeHeater : IHeater
     {
+        private int turnOnActivated;
+        private int turnOffActivated;
+
+        public int TurnOnActivated
+        {
+            get
+            {
+                return this.turnOnActivated;
+            }
+            set
+            {
+                this.turnOnActivated = value;
+            }
+        }
+
+        public int TurnOffActivated
+        {
+            get
+            {
+                return this.turnOffActivated;
+            }
+            set
+            {
+                this.turnOffActivated = value;
+            }
+        }
+
+        public FakeHeater()
+        {
+            turnOffActivated = 0;
+            turnOnActivated = 0;
+        }
+
         public void TurnOn()
         {
-            System.Console.WriteLine("Heater is on");
+            ++turnOnActivated;
         }
 
         public void TurnOff()
         {
-            System.Console.WriteLine("Heater is off");
+            ++turnOffActivated;
         }
 
         public bool RunSelfTest()

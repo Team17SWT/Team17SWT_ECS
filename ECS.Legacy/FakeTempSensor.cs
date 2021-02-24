@@ -2,13 +2,30 @@
 
 namespace ECS.Legacy
 {
-    internal class FakeTempSensor : ITempSensor
+    public class FakeTempSensor : ITempSensor
     {
-        private Random gen = new Random();
+        private int temperature;
+
+        public int Temperature
+        {
+            get
+            {
+                return this.temperature;
+            }
+            set
+            {
+                this.temperature = value;
+            }
+        }
+
+        public FakeTempSensor()
+        {
+            temperature = 0;
+        }
 
         public int GetTemp()
         {
-            return gen.Next(-5, 45);
+            return temperature;
         }
 
         public bool RunSelfTest()
