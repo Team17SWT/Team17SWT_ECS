@@ -6,8 +6,17 @@ namespace ECS.Legacy
     {
         private int temperature;
 
-        public int Temperature { get; set; }
-        
+        public int Temperature
+        {
+            get
+            {
+                return this.temperature;
+            }
+            set
+            {
+                this.temperature = value;
+            }
+        }
 
         public FakeTempSensor()
         {

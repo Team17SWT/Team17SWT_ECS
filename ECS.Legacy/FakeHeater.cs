@@ -2,31 +2,28 @@
 {
     public class FakeHeater : IHeater
     {
-        private int turnOnActivated;
-        private int turnOffActivated;
-
+        
         public int TurnOnActivated { get; set; }
         
 
         public int TurnOffActivated { get; set; }
 
 
-        
 
         public FakeHeater()
         {
-            turnOffActivated = 0;
-            turnOnActivated = 0;
+            TurnOffActivated = 0;
+            TurnOnActivated = 0;
         }
 
         public void TurnOn()
         {
-            ++turnOnActivated;
+            ++TurnOnActivated;
         }
 
         public void TurnOff()
         {
-            ++turnOffActivated;
+            ++TurnOffActivated;
         }
 
         public bool RunSelfTest()
