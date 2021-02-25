@@ -1,39 +1,23 @@
 using ECS.Legacy;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace ECS.Legacy.Test.Unit
 {
     public class Tests
     {
-        private FakeHeater _heater;
-        private FakeTempSensor _tempSensor;
+        private IHeater _heater;
+        private ITempSensor _tempSensor;
         private ECS _uut;
 
         [SetUp]
         public void Setup()
         {
-            _heater = new FakeHeater();
-            _tempSensor = new FakeTempSensor();
+            _heater = Substitute.For<IHeater>();
+            _tempSensor = Substitute.For<ITempSensor>();
             _uut = new ECS(_tempSensor, _heater, 25);
         }
 
-
-        [TestCase(25,25)]
-        [TestCase(24,24)]
-        [TestCase(-5,-5)]
-        [TestCase(0,0)]
-
-        public void Temp_TempIsCorrect_SetTempIsEqualToGetTemp(int temp, int result)
-        {
-            
-            // Act
-
-            _tempSensor.Temperature = temp;
-
-            // Assert
-
-            Assert.That(_tempSensor.GetTemp(),Is.EqualTo(result));
-        }
 
         [Test]
 
@@ -41,13 +25,13 @@ namespace ECS.Legacy.Test.Unit
         {
             // Act
 
-            _tempSensor.Temperature = 20;
+            _tempSensor.GetTemp().Returns(24);
 
             _uut.Regulate();
 
             // Assert
-
-            Assert.That(_heater.TurnOnActivated,Is.EqualTo(1));
+            _heater.Received(1).TurnOn();
+            // Assert.That(_heater.TurnOnActivated,Is.EqualTo(1));
         }
 
         [Test]
@@ -56,13 +40,66 @@ namespace ECS.Legacy.Test.Unit
         {
             // Act
 
-            _tempSensor.Temperature = 30;
+            _tempSensor.GetTemp().Returns(26);
 
             _uut.Regulate();
 
             // Assert
-
-            Assert.That(_heater.TurnOffActivated,Is.EqualTo(1));
+            _heater.Received(1).TurnOff();
+            // Assert.That(_heater.TurnOffActivated, Is.EqualTo(1));
         }
+
+        [Test]
+
+        public void RunSelfTest_SelfTestReturnsTrue()
+        {
+            // Act
+
+            _tempSensor.RunSelfTest().Returns(true);
+            _heater.RunSelfTest().Returns(true);
+
+            Assert.IsTrue(_uut.RunSelfTest());
+            // Assert
+        }
+
+        [TestCase(true,false)]
+        [TestCase(false,true)]
+
+        public void RunSelfTest_SelfTestReturnsFalse(bool a, bool b)
+        {
+            // Act
+
+            _tempSensor.RunSelfTest().Returns(a);
+            _heater.RunSelfTest().Returns(b);
+
+            Assert.IsFalse(_uut.RunSelfTest());
+            // Assert
+        }
+
+        [Test]
+
+        public void GetCurrentTemp_TempIsCorrect()
+        {
+
+            // Act
+            _tempSensor.GetTemp().Returns(25);
+
+            // Assert
+
+            Assert.That(_uut.GetCurTemp(),Is.EqualTo(25));
+        }
+
+        [Test]
+
+        public void SetThreshold_ThresholdIsSetCorrect()
+        {
+
+            // Act
+            _uut.SetThreshold(20);
+
+            Assert.That(_uut.GetThreshold(),Is.EqualTo(20));
+        }
+
+        
     }
 }
