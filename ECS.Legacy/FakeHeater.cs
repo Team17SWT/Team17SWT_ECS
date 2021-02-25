@@ -5,29 +5,13 @@
         private int turnOnActivated;
         private int turnOffActivated;
 
-        public int TurnOnActivated
-        {
-            get
-            {
-                return this.turnOnActivated;
-            }
-            set
-            {
-                this.turnOnActivated = value;
-            }
-        }
+        public int TurnOnActivated { get; set; }
+        
 
-        public int TurnOffActivated
-        {
-            get
-            {
-                return this.turnOffActivated;
-            }
-            set
-            {
-                this.turnOffActivated = value;
-            }
-        }
+        public int TurnOffActivated { get; set; }
+
+
+        
 
         public FakeHeater()
         {
